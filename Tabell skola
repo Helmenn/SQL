@@ -1,0 +1,45 @@
+CREATE TABLE Kurser
+(
+	KursID INT IDENTITY(1,1) PRIMARY KEY,
+	Kursnamn NVARCHAR(120)
+)
+
+-------
+
+CREATE TABLE Elever
+(
+	ElevID INT IDENTITY(1,1) PRIMARY KEY,
+	Elevnamn NVARCHAR(120),
+	KursID INT
+)
+
+-------
+
+INSERT INTO Kurser (Kursnamn)
+VALUES ('C#'),
+('HTML'),
+('CSS'),
+('Java')
+
+-------
+
+INSERT INTO Elever (Elevnamn, KursID)
+VALUES ('Kalle',1),
+('Johnny',1),
+('Johanna',1),
+('Anna',2),
+('Lars',2),
+('Eva',2),
+('Per',3),
+('Anders',3),
+('Jan',3),
+('Gunnar',4),
+('Hans',4),
+('Olof',4)
+
+-------
+
+SELECT * FROM Elever
+LEFT OUTER JOIN Kurser
+ON Kurser.KursID = Elever.KursID WHERE Kursnamn = 'C#'
+-------
